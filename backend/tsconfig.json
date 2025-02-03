@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES6",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "include": ["src/**/*", "types.d.ts"],
+  "exclude": ["node_modules"]
+}
