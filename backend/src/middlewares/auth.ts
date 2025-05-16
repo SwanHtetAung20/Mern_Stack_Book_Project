@@ -1,12 +1,12 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { Unauthorized, Forbidden } from "../errors/index.js";
+import { BadRequest, Unauthorized } from "../errors/index.js";
 
 const isAuthorize = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    throw new Unauthorized("Unauthorized Request");
+    throw new BadRequest("Unauthorized Request");
   }
   try {
     const token = authHeader.split(" ")[1];
@@ -14,7 +14,7 @@ const isAuthorize = (req: Request, res: Response, next: NextFunction) => {
     req.user = { id: decoded.id, name: decoded.username, roles: decoded.roles };
     next();
   } catch (err) {
-    throw new Forbidden("Invalid or Expired Token. Please login again.!");
+    throw new Unauthorized("Invalid or Expired Token. Please login again.!");
   }
 };
 

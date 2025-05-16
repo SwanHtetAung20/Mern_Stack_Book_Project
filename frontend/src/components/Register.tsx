@@ -43,7 +43,7 @@ const Register = () => {
       try {
         const result = await register({ name, email, password }).unwrap();
         dispatch(setCredentials({ ...result }));
-        navigate("/home");
+        navigate("/");
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error("EE", error);
@@ -113,7 +113,7 @@ const Register = () => {
               <button className="w-full py-2.5 text-white rounded-lg cursor-pointer flex justify-center items-center">
                 <span className="bg-gray-600 px-2 py-2 rounded hover:bg-gray-700">
                   <FontAwesomeIcon icon={faCheck} className="mr-2" />
-                  Sign in
+                  Sign up
                 </span>
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">

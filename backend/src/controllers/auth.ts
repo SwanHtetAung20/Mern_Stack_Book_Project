@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
-import { BadRequest, Unauthorized } from "../errors/index.js";
+import { Unauthorized } from "../errors/index.js";
 
 const register = async (req: Request, res: Response) => {
   const user = await User.create({ ...req.body });
